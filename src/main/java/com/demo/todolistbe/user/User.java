@@ -1,6 +1,7 @@
 package com.demo.todolistbe.user;
 
 
+import com.demo.todolistbe.task.Task;
 import com.demo.todolistbe.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,8 @@ public class User implements UserDetails {
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
-
+  @OneToMany
+  private List<Task> tasks;
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return role.getAuthorities();
